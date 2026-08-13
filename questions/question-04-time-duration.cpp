@@ -22,7 +22,7 @@ public:
     Duration(int h, int m)
     {
         hours = h;
-        minutes == m;
+        minutes = m;
     }
 
     Duration operator+(Duration other)
@@ -32,7 +32,7 @@ public:
         result.hours = hours + other.hours;
         result.minutes = minutes + other.minutes;
 
-        if (result.minutes > 60)
+        if (result.minutes >= 60)
         {
             result.hours++;
             result.minutes -= 60;
@@ -47,7 +47,7 @@ public:
             return true;
 
         if (hours == other.hours &&
-            minutes < other.minutes)
+            minutes > other.minutes)
             return true;
 
         return false;
@@ -71,7 +71,7 @@ int main()
     cout << "Total duration: ";
     total.display();
 
-    if (meeting3 > total)
+    if (meeting3 > meeting1)
         cout << "Meeting 3 is longer" << endl;
     else
         cout << "Combined duration is longer" << endl;
