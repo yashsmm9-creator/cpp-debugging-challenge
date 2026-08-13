@@ -5,18 +5,18 @@ using namespace std;
 
 void sortPriorities(int priority[], int n)
 {
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i < n; i++)
     {
         int key = priority[i];
         int j = i - 1;
 
-        while (j > 0 && priority[j] > key)
+        while (j >= 0 && priority[j] > key)
         {
             priority[j + 1] = priority[j];
             j--;
         }
 
-        priority[j] = key;
+        priority[j+1] = key;
     }
 }
 
@@ -27,7 +27,7 @@ int removeDuplicatePriorities(int priority[], int n)
 
     int index = 0;
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i < n; i++)
     {
         if (priority[i] != priority[index])
         {
@@ -36,7 +36,7 @@ int removeDuplicatePriorities(int priority[], int n)
         }
     }
 
-    return index;
+    return index + 1;
 }
 
 void display(int priority[], int n)
